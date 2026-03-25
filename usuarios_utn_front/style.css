@@ -1,0 +1,166 @@
+/* --- Estilo general --- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  background: url("img/background_login.png") no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- LOGIN --- */
+.login-box {
+  background: rgba(0, 0, 0, 0.6); /* semi-transparente */
+  padding: 40px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background: #4cafef;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+}
+
+.login-box button:hover {
+  background: #1e90ff;
+}
+
+.login-box a {
+  display: block;
+  margin-top: 15px;
+  color: #ddd;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.login-box a:hover {
+  color: #fff;
+}
+
+/* --- LISTA --- */
+.lista-box {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 900px;
+  width: 90%;
+  margin: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.8);
+}
+
+.lista-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+#buscar {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  width: 250px;
+  margin-right: 10px;
+}
+
+#btnBuscar {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  background: #4cafef;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#btnBuscar:hover {
+  background: #1e90ff;
+}
+
+#tablaUsuarios {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#tablaUsuarios th, #tablaUsuarios td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+#tablaUsuarios th {
+  background: rgba(255,255,255,0.1);
+  font-weight: bold;
+}
+
+.bloqueado {
+  background-color: #fd9f8b; /* rojo suave */
+}
+
+.desbloqueado {
+  background-color: #cef8c6; /* verde suave */
+}
+
+#tablaUsuarios button {
+  padding: 6px 12px;
+  margin: 2px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#tablaUsuarios button:first-child {
+  background: #e74c3c; /* rojo */
+  color: #fff;
+}
+
+#tablaUsuarios button:first-child:hover {
+  background: #c0392b;
+}
+
+#tablaUsuarios button:last-child {
+  background: #2ecc71; /* verde */
+  color: #fff;
+}
+
+#tablaUsuarios button:last-child:hover {
+  background: #27ae60;
+}
