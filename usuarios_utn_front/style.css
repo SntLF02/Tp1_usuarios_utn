@@ -1,4 +1,4 @@
-/* --- Estilo general --- */
+/* --- ESTILO GENERAL --- */
 body {
   margin: 0;
   padding: 0;
@@ -72,7 +72,7 @@ body {
   color: #fff;
 }
 
-/* --- LISTA --- */
+/* --- CAJA PRINCIPAL LISTA --- */
 .lista-box {
   background: rgba(0, 0, 0, 0.6);
   padding: 30px;
@@ -81,10 +81,20 @@ body {
   width: 90%;
   margin: auto;
   box-shadow: 0 0 15px rgba(0,0,0,0.8);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.lista-box h2 {
+/* --- CABECERA FIJA Y BUSCADOR --- */
+.header-fijo {
+  margin-bottom: 20px;
   text-align: center;
+  flex-shrink: 0;
+}
+
+.header-fijo h2 {
+  margin-top: 0;
   margin-bottom: 20px;
   font-size: 26px;
   letter-spacing: 1px;
@@ -113,31 +123,73 @@ body {
   background: #1e90ff;
 }
 
-#tablaUsuarios {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+/* --- CONTENEDOR DE TABLA (SCROLL) --- */
+.tabla-container {
+  overflow-y: auto;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-#tablaUsuarios th, #tablaUsuarios td {
-  border: 1px solid #ccc;
+/* --- TABLA --- */
+#tablaUsuarios {
+  width: 100%;
+  border-collapse: separate; /* Cambiamos a separate para evitar el glitch */
+  border-spacing: 0;         /* Quitamos el espacio entre celdas */
+}
+
+#tablaUsuarios tr {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Aplicamos bordes solo abajo y a la derecha para no duplicarlos */
+#tablaUsuarios th, 
+#tablaUsuarios td {
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
   padding: 10px;
   text-align: center;
 }
 
-#tablaUsuarios th {
-  background: rgba(255,255,255,0.1);
-  font-weight: bold;
+/* Agregamos el borde izquierdo faltante solo a la primera columna */
+#tablaUsuarios th:first-child, 
+#tablaUsuarios td:first-child {
+  border-left: 1px solid #ccc;
 }
 
+/* Estilo específico para los encabezados pegajosos */
+#tablaUsuarios th {
+  position: sticky;
+  top: 0;
+  background: #34495e;
+  color: #fff;
+  font-weight: bold;
+  z-index: 10;
+  /* Sobrescribimos con los bordes oscuros para que no se vea el gris claro al scrollear */
+  border-top: 1px solid #2c3e50;
+  border-bottom: 2px solid #2c3e50; /* Un poco más grueso abajo queda genial */
+  border-right: 1px solid #2c3e50;
+}
+
+/* Borde izquierdo del primer encabezado */
+#tablaUsuarios th:first-child {
+  border-left: 1px solid #2c3e50;
+}
+
+/* --- ESTADOS DE USUARIO --- */
 .bloqueado {
-  background-color: #fd9f8b; /* rojo suave */
+  background-color: #fd9f8b;
 }
 
 .desbloqueado {
-  background-color: #cef8c6; /* verde suave */
+  background-color: #cef8c6;
 }
 
+.bloqueado, 
+.desbloqueado {
+  color: #333;
+}
+
+/* --- BOTONES DE TABLA --- */
 #tablaUsuarios button {
   padding: 6px 12px;
   margin: 2px;
@@ -148,29 +200,25 @@ body {
 }
 
 #tablaUsuarios button:first-child {
-  background: #e74c3c; /* rojo */
+  background: #e74c3c;
   color: #fff;
 }
 
-#tablaUsuarios button:first-child:hover {
+#tablaUsuarios button:first-child:hover:not(:disabled) {
   background: #c0392b;
 }
 
 #tablaUsuarios button:last-child {
-  background: #2ecc71; /* verde */
+  background: #2ecc71;
   color: #fff;
 }
 
-#tablaUsuarios button:last-child:hover {
+#tablaUsuarios button:last-child:hover:not(:disabled) {
   background: #27ae60;
-}
-
-.bloqueado, .desbloqueado {
-  color: #333;
 }
 
 #tablaUsuarios button:disabled {
   opacity: 0.5;
-  cursor: not-allowed; 
+  cursor: not-allowed;
   filter: grayscale(100%);
 }
