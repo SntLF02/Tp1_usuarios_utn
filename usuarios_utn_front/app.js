@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnBuscar = document.getElementById("btnBuscar");
   if (btnBuscar) {
     btnBuscar.addEventListener("click", buscarUsuario);
-    cargarUsuarios(); // carga inicial de la tabla
+    cargarUsuarios();
   }
 });
 
@@ -25,9 +25,7 @@ function login(user, pass) {
     .then(res => res.json())
     .then(data => {
       if (data.respuesta === "OK") {
-        // Mostrar el cartel
         alert(data.mje);
-        // Redirigir automáticamente después de cerrar el alert
         window.location.href = "/TP1_usuarios_utn/usuarios_utn_front/lista.html";
 
       } else {
@@ -59,26 +57,38 @@ function actualizarEstado(idUser, estado) {
     .then(res => res.json())
     .then(data => {
       alert(data.mje);
-      cargarUsuarios(); // refresca la tabla
+      cargarUsuarios();
     });
 }
 
+// app.js
 function renderTabla(data) {
   const tbody = document.querySelector("#tablaUsuarios tbody");
   tbody.innerHTML = "";
+  
   data.forEach(u => {
     const fila = document.createElement("tr");
     fila.id = `fila-${u.id}`;
-    fila.className = (u.bloqueado === "Y") ? "bloqueado" : "desbloqueado";
+    
+    const isBloqueado = u.bloqueado === "Y";
+    fila.className = isBloqueado ? "bloqueado" : "desbloqueado";
+
+    const btnBloquear = isBloqueado 
+      ? `<button disabled>Bloquear</button>` 
+      : `<button onclick="actualizarEstado(${u.id}, 'Y')">Bloquear</button>`;
+      
+    const btnDesbloquear = !isBloqueado 
+      ? `<button disabled>Desbloquear</button>` 
+      : `<button onclick="actualizarEstado(${u.id}, 'N')">Desbloquear</button>`;
+
     fila.innerHTML = `
       <td>${u.id}</td>
       <td>${u.usuario}</td>
       <td>${u.apellido}</td>
       <td>${u.nombre}</td>
-      <td>${u.bloqueado}</td>
       <td>
-        <button onclick="actualizarEstado(${u.id}, 'Y')">Bloquear</button>
-        <button onclick="actualizarEstado(${u.id}, 'N')">Desbloquear</button>
+        ${btnBloquear}
+        ${btnDesbloquear}
       </td>
     `;
     tbody.appendChild(fila);

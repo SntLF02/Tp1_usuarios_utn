@@ -11,7 +11,7 @@ $sql = "SELECT * FROM usuarios_utn WHERE usuario='$user' AND clave='$pass'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    echo json_encode(["respuesta" => "ok", "mje" => "Bienvenido $user"]);
+    echo json_encode(["respuesta" => "OK", "mje" => "Bienvenido $user"]);
 } else {
-    echo json_encode(["respuesta" => "error", "mje" => "Usuario o contraseña incorrectos"]);
+    echo json_encode(["respuesta" => "ERROR", "mje" => "Usuario o contraseña incorrectos"]);
 }

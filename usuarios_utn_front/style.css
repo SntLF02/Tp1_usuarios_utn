@@ -14,7 +14,7 @@ body {
 
 /* --- LOGIN --- */
 .login-box {
-  background: rgba(0, 0, 0, 0.6); /* semi-transparente */
+  background: rgba(0, 0, 0, 0.6);
   padding: 40px;
   border-radius: 10px;
   width: 320px;
@@ -163,4 +163,14 @@ body {
 
 #tablaUsuarios button:last-child:hover {
   background: #27ae60;
+}
+
+.bloqueado, .desbloqueado {
+  color: #333;
+}
+
+#tablaUsuarios button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed; 
+  filter: grayscale(100%);
 }
